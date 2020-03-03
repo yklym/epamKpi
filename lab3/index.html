@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./src/src.js" defer></script>
+    <style>
+        table {}
+
+        table,
+        th,
+        td {
+            min-width: 100px;
+            padding: auto;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Task1</h2>
+
+    <table>
+        <tr>
+            <td><input type="button" value="Children count:" id="childCountButton"></td>
+            <td id="childCountField"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="Profession:" id="professionButton"></td>
+            <td id="professionField"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="Lover's name:" id="loverNameButton"></td>
+            <td id="loverNameField"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="Country:" id="countryButton"></td>
+            <td id="countryField"></td>
+        </tr>
+    </table>
+    <br>
+    <input type="button" value="Get the result!" id="firstTaskResultButton">
+    <hr>
+
+    <h2>Task2</h2>
+
+    <input type="button" value="Get the result!" id="secondTaskResultButton">
+    <input type="number" value="0" min="0" max="50" step="1" id="secondTaskMaxNumber">
+
+    <div style="background-color: lime; overflow: scroll;text-align: center;height: 150px;">
+        <pre id="secondTaskField">
+
+        </pre>
+    </div>
+    <hr>
+
+    <h2>Task3</h2>
+    <input type="button" value="Start the countdown" id="thirdTaskResultButton">
+    <input type="button" value="Clear" id="thirdTaskClearButton">
+    <input type="number" value="10" min="0" max="100" step="1" id="thirdTaskMaxNumber">
+    <br>
+    <div id= "thirdTaskField" style="background-color: lime; overflow: scroll;text-align: center;height: 150px;">
+
+    </div>
+
+
+
+    <hr>
+
+    <h2>Task4</h2>
+    <hr>
+
+</body>
+
+</html>

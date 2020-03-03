@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lab1</title>
+
+    <link rel="stylesheet" href="../public/styles/styles.css">
+
+</head>
+
+<body>
+    <nav>
+        <h2><a href="../index.html">Menu</a></h2>
+    </nav>
+    <hr />
+
+    <!-- Task  -->
+
+    <header>
+        <h2>Welcome to my web-site!</h2>
+    </header>
+
+    <aside>
+        <header>
+
+            <h4>Aside part header</h4>
+        </header>
+        <figure>
+            <img src="../public/images/rabbit-big.jpg" alt="Rabbit">
+            <figcaption> Krolek</figcaption>
+        </figure>
+        <section>
+            <p>Picture taken at<time>10:00</time></p>
+            <p>Tommorow it's <time datetime="2008-02-14 20:00">Valentines day</time>.</p>
+        </section>
+    </aside>
+
+    <main>
+        <header>
+            <h3>Main part header</h3>
+        </header>
+
+        <article>
+            <h4>
+                Article 1 header
+            </h4>
+
+            <p>
+                This arabic text <bdi>حضور المؤتمر الدولي</bdi> is automatically displayed <mark>right-to-left.</mark>
+            </p>
+            <p>
+                <label for="testField">Datalist PL:</label>
+                <input list="list" id="testField">
+                <datalist id="list">
+                    <option value="Js">
+                    <option value="Php">
+                </datalist>
+            </p>
+
+            <p>
+                http://this<wbr>.is<wbr>.a<wbr>.really<wbr>.long<wbr>
+                .example<wbr>.com/With<wbr>/deeper<wbr>/level<wbr>
+                /pages<wbr>/deeper<wbr>/level<wbr>/pages<wbr>/deeper<wbr>
+                /level<wbr>/pages<wbr>/deeper<wbr>/level<wbr>
+                /pages<wbr>/deeper<wbr>/level<wbr>/pages
+            </p>
+
+        </article>
+
+        <article>
+            <h4>
+                Article 2 header
+            </h4>
+
+            <details>
+                <summary>Scale </summary>
+                <form oninput="{
+                                let res = (parseInt(a.value)||0) + (parseInt(b.value) || 0);
+                                pr.value = res;
+                                mt.value = res;
+                                o.value= res;
+                                }">
+                    <input name="a" id="a" type="number" min="0" max="100" step="any"> +
+                    <input name="b" id="b" type="number" min="0" max="100" step="any"> =
+                    <output name="o" for="a b"></output>
+                    <br />
+                    <progress id="pr" max="100" value="0">progress</progress>
+                    <meter id="mt" max="100" low="10" value="0" high="60">meter</meter>
+                    <br />
+                </form>
+            </details>
+
+            <audio controls loop>
+                <source src="../public/audio/tuturu.mp3" type="audio/mpeg">
+                <p>Error while loading audio</p>
+        </article>
+
+
+        <article>
+            <h4>
+                Article 3 header
+            </h4>
+
+            <section class="dialog">
+                <button id="openDialog">Открыть окно</button>
+                <dialog>
+                    <p>I@m dialog</p>
+                    <br />
+                    <button id="closeDialog">Close dialog</button>
+                </dialog>
+                <script>
+                    let dialog = document.querySelector('dialog');
+                    document.querySelector('#openDialog').onclick = function () {
+                        dialog.show();
+                    }
+                    document.querySelector('#closeDialog').onclick = function () {
+                        dialog.close();
+                    }
+                </script>
+            </section>
+            <br />
+            <section>
+                <button onclick="showContent()">Show content</button>
+                <button onclick="deleteContent()">Delete content</button>
+
+                <div id="showTemplate">
+
+                </div>
+                <template>
+                    <picture>
+                        <source srcset="../public/images/rabbit2.jpg" media="(max-width: 600px)">
+                        <source srcset="../public/images/rabbit-big.jpg">
+                          <img src="../public/images/rabbit-big.jpg" width="214" height="204">
+                    </picture>
+                </template>
+
+                <script>
+                    function showContent() {
+                        let temp = document.getElementsByTagName("template")[0];
+                        let clon = temp.content.cloneNode(true);
+                        let showTemplateSection = document.getElementById("showTemplate");
+                        showTemplateSection.appendChild(clon);
+                    }
+
+                    function deleteContent() {
+                        document.getElementById("showTemplate").innerHTML = "";
+                    }
+                </script>
+
+            </section>
+            <section>
+                <!-- FIREFOX ONLY -->
+                <div contextmenu="testmenu"> Right click on me.
+                    <p>
+                        <menu type="context" id="testmenu">
+                            <menuitem label="like">
+                            </menuitem>
+                            <menuitem label="dislike">
+                            </menuitem>
+                        </menu>
+                    </p>
+                </div>
+            </section>
+        </article>
+
+        <article>
+            <header>article 5 header</header>
+
+            <p>This video is added by video tag</p>
+            <video width="400" height="300" controls poster="../public/images/rabbit2.jpg">
+                <source src="../public/video/vid.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                <track kind="subtitles" src="../public/video/subt.en.wtt" srclang="en" label="English">
+
+                Tag video is not supported.
+            </video>
+
+            <p>This gif is added by embed tag</p>
+
+            <embed type="video/webm" src="../public/images/skachat-anime-gifki-humoraf-14.gif" autoplay="false" width="400" height="300">
+
+        </article>
+
+        <article>
+            <p>This is canvas</p>
+            <script>
+                window.onload = function () {
+                    var drawingCanvas = document.getElementById('smile');
+                    if (drawingCanvas && drawingCanvas.getContext) {
+                        var context = drawingCanvas.getContext('2d');
+                        context.strokeStyle = "#000";
+                        context.fillStyle = "#fc0";
+                        context.beginPath();
+                        context.arc(100, 100, 50, 0, Math.PI * 2, true);
+                        context.closePath();
+                        context.stroke();
+                        context.fill();
+                        // Рисуем левый глаз 
+                        context.fillStyle = "#fff";
+                        context.beginPath();
+                        context.arc(84, 90, 8, 0, Math.PI * 2, true);
+                        context.closePath();
+                        context.stroke();
+                        context.fill();
+                        // Рисуем правый глаз 
+                        context.beginPath();
+                        context.arc(116, 90, 8, 0, Math.PI * 2, true);
+                        context.closePath();
+                        context.stroke();
+                        context.fill();
+                        // Рисуем рот
+                        context.beginPath();
+                        context.moveTo(70, 115);
+                        context.quadraticCurveTo(100, 130, 130, 115);
+                        context.quadraticCurveTo(100, 150, 70, 115);
+                        context.closePath();
+                        context.stroke();
+                        context.fill();
+                    }
+                }
+            </script>
+            </head>
+
+            <body>
+                <canvas id="smile" width="200" height="200">
+                    <p>Canvas is not supported</p>
+                </canvas>
+        </article>
+
+
+    </main>
+
+    <footer> Hello, i'm footer</footer>
+</body>
+
+</html>
