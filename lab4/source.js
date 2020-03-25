@@ -13,15 +13,14 @@
     const inputsMap = new Map(inputsArr);
 
     task1Form.addEventListener("input", event => {
-        let currInput = event.target;
-        let strVal = currInput.value.trim();
-        if (strVal == "") {
+        const currInput = event.target;
+        const strVal = currInput.value.trim();
+        if (!strVal) {
             currInput.classList.add("invalid-input");
             return;
         }
-        let isPxRequired = currInput.name !== "borderColor" && currInput.name !== "alter";
-        if (isPxRequired) {
-            let isNumber = !isNaN(strVal.substr(0, strVal.length - 2))
+        if (currInput.name !== "borderColor" && currInput.name !== "alter") {
+            const isNumber = !isNaN(strVal.substr(0, strVal.length - 2))
 
             if (!strVal.endsWith("px") || !isNumber) {
                 currInput.classList.add("invalid-input");
@@ -77,20 +76,20 @@
     addStudentButton.addEventListener("click", () => {
         // CHECK IF THERE IS DEFAULT STUDENT map.has
 
-        let studentName = getDefaultStudentName();
-        let studentMark = Math.floor(Math.random() * 100);
+        const studentName = getDefaultStudentName();
+        const studentMark = Math.floor(Math.random() * 100);
 
-        let tr = document.createElement("tr");
+        const tr = document.createElement("tr");
 
         // Delete button
-        let buttonTd = document.createElement("td");
-        let button = document.createElement("button");
+        const buttonTd = document.createElement("td");
+        const button = document.createElement("button");
         button.setAttribute("type", "button");
         button.classList.add("btn");
         button.classList.add("btn-outline-dark");
         button.textContent = "Delete student";
         button.addEventListener("click", event => {
-            let tr = event.currentTarget.parentElement.parentElement;
+            const tr = event.currentTarget.parentElement.parentElement;
             marks.delete(tr.dataset.student);
             getChart(tr.dataset.student).remove();
             tr.remove();
@@ -99,12 +98,12 @@
 
         buttonTd.appendChild(button);
         // Student field
-        let studentTd = document.createElement("td");
+        const studentTd = document.createElement("td");
         studentTd.textContent = studentName;
         studentTd.classList.add = "studentTd";
         studentTd.setAttribute("contenteditable", "true");
         // Mark field
-        let markTd = document.createElement("td");
+        const markTd = document.createElement("td");
         markTd.textContent = studentMark;
         markTd.classList.add = "markTd";
         markTd.setAttribute("contenteditable", "true");
@@ -135,9 +134,9 @@
 
     function renderContent() {
         marks.forEach((studMark, student) => {
-            let chart = getChart(student);
+            const chart = getChart(student);
             if (chart) {
-                let chartBlock = chart.querySelector(".chart-block");
+                const chartBlock = chart.querySelector(".chart-block");
                 chartBlock.style.height = `${studMark}px`;
                 applyChartBlockWidth(chartBlock);
             } else {
@@ -146,7 +145,7 @@
         });
 
         function createChart(studMark, student) {
-            let chartDiv = document.createElement("div");
+            const chartDiv = document.createElement("div");
             // Chart Styles
             chartDiv.style.height = `${studMark}px`;
             applyChartBlockWidth(chartDiv);
@@ -156,23 +155,21 @@
             // Chart Data
 
             // chart Events
-            chartDiv.addEventListener("mouseover", () => {
-                let targetDiv = event.currentTarget;
+            chartDiv.addEventListener("mouseover", (event) => {
+                const targetDiv = event.currentTarget;
                 targetDiv.textContent = `[${targetDiv.parentElement.dataset.mark}]`;
                 // Add check if div is too small ??
             });
 
-            chartDiv.addEventListener("mouseout", () => {
-                event.currentTarget.textContent = "";
-            });
+            chartDiv.addEventListener("mouseout", (event) => event.currentTarget.textContent = "");
 
             // chart Text
-            let textDiv = document.createElement("div");
+            const textDiv = document.createElement("div");
             textDiv.textContent += student;
             textDiv.classList.add("chart-text");
 
             // Chart Wrapper
-            let newDiv = document.createElement("div");
+            const newDiv = document.createElement("div");
             newDiv.appendChild(chartDiv);
             newDiv.appendChild(textDiv);
 
@@ -184,14 +181,13 @@
         }
 
         function applyChartBlockWidth(chartBlock) {
-            let chartDivWidth = parseInt(diagramDivWidth) / marks.size;
-            chartDivWidth *= 0.5;
+            const chartDivWidth = parseInt(diagramDivWidth) / marks.size / 2;
             chartBlock.style.width = `${chartDivWidth}px`;
         }
     }
 
     function getChart(student) {
-        let charts = diagramDiv.querySelectorAll(".chart");
+        const charts = diagramDiv.querySelectorAll(".chart");
         for (let i = 0; i < charts.length; i++) {
             if (charts[i].dataset.student === student) {
                 return charts[i];
@@ -201,7 +197,7 @@
     }
 
     function getRandomColor() {
-        let letters = '0123456789ABCDEF';
+        const letters = '0123456789ABCDEF';
         let color = '#';
         for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
@@ -210,8 +206,8 @@
     }
 
     task2Table.addEventListener("input", event => {
-        let tr = event.target.parentElement;
-        let [studName, studMark] = tr.querySelectorAll(`td[contenteditable="true"]`);
+        const tr = event.target.parentElement;
+        const [studName, studMark] = tr.querySelectorAll(`td[contenteditable="true"]`);
 
         marks.delete(tr.dataset.student);
         marks.set(studName.textContent, studMark.textContent);
@@ -221,7 +217,7 @@
         tr.dataset.mark = studMark.textContent;
 
         function udpateChartName(student, newStudent) {
-            let chart = getChart(student);
+            const chart = getChart(student);
             chart.dataset.student = newStudent;
             chart.dataset.mark = marks.get(newStudent);
 
