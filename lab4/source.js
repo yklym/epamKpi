@@ -1,8 +1,8 @@
 (function () {
-    const myForm = document.getElementById("task1Form"),
+    const task1Form = document.getElementById("task1Form"),
         targetImg = document.getElementById('taskImg'),
-        allButtons = myForm.querySelectorAll(`input[type="text"]`),
-        submitButton = myForm.querySelector(`input[type="button"]`),
+        allButtons = task1Form.querySelectorAll(`input[type="text"]`),
+        submitButton = task1Form.querySelector(`input[type="button"]`),
         myButtons = {
             width: allButtons[0],
             height: allButtons[1],
@@ -11,39 +11,46 @@
             alter: allButtons[4]
         };
 
-    submitButton.addEventListener("click", () => {
 
-        if (!areValid()) {
+    task1Form.addEventListener("input", event => {
+        let currInput = event.target;
+        let strVal = currInput.value.trim();
+        console.log(strVal);
+        if (strVal == "") {
+            currInput.classList.add("invalid-input");
             return;
         }
-        for (let styleRule in myButtons) {
-            if (styleRule === "alter") {
-                targetImg[styleRule] = myButtons[styleRule].value;
-                break;
+        let isPxRequired = currInput.name !== "borderColor" && currInput.name !== "alter";
+        if (isPxRequired) {
+            let isNumber = !isNaN(strVal.substr(0, strVal.length - 2))
+            console.log(` isNumber ${isNumber}`);
+            console.log(` Ends with px ${strVal.endsWith("px")}`);
+            if (!strVal.endsWith("px") || !isNumber) {
+                currInput.classList.add("invalid-input");
+                return;
             }
-            targetImg.style[styleRule] = myButtons[styleRule].value;
+        }
+        currInput.classList.remove("invalid-input");
+
+    });
+    submitButton.addEventListener("click", () => {
+
+        if (checkInput()) {
+            for (let styleRule in myButtons) {
+                if (styleRule === "alter") {
+                    targetImg[styleRule] = myButtons[styleRule].value;
+                    break;
+                }
+                targetImg.style[styleRule] = myButtons[styleRule].value;
+            }
         }
     });
 
-    function areValid() {
+    function checkInput() {
         for (let buttonName in myButtons) {
-            let strVal = myButtons[buttonName].value.trim();
-            if (strVal == "") {
-                myButtons[buttonName].style.border = "2px solid red";
-                console.log("Error");
+            if (myButtons[buttonName].contains("invalid-input")) {
                 return false;
             }
-            let isPxRequired = buttonName !== "borderColor" && buttonName !== "alter";
-            if (isPxRequired) {
-                let isNumber = !isNaN(strVal.substr(0, strVal.length - 2))
-                if (!strVal.endsWith("px") || !isNumber) {
-                    console.log("Wrong number format");
-                    myButtons[buttonName].style.border = "2px solid red";
-                    return false;
-                }
-            }
-
-            myButtons[buttonName].style.border = "none";
         }
         return true;
     }
@@ -64,7 +71,7 @@
         // CHECK IF THERE IS DEFAULT STUDENT map.has
 
         let studentName = getDefaultStudentName();
-        let studentMark = 50;
+        let studentMark = Math.floor(Math.random() * 100);
 
         let tr = document.createElement("tr");
 

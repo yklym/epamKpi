@@ -22,6 +22,10 @@
             border-style: solid;
         }
 
+        .invalid-input {
+            border: 2px solid red;
+        }
+
         .chart-block {
             /* display: inline; */
             margin-bottom: 0em;
@@ -30,24 +34,26 @@
             color: white;
         }
 
-        .chart-text{
+        .chart-text {
             color: black;
             text-align: center;
         }
 
-        #diagramDiv{
+        #diagramDiv {
             display: flex;
             align-items: flex-end;
             justify-content: space-evenly;
             height: 200px;
-            padding-bottom :0em;
+            padding-bottom: 0em;
         }
-        #task2Table{
+
+        #task2Table {
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
-        #addStudentButton{
+
+        #addStudentButton {
             margin-left: 50px;
         }
     </style>
@@ -71,7 +77,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Width</div>
                     </div>
-                    <input type="text" class="form-control" placeholder="Width" value="200px">
+                    <input type="text" name="width" class="form-control" placeholder="Width" value="200px">
                 </div>
             </div>
 
@@ -80,7 +86,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text">Height</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Height"
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Height" name="height"
                         value="100px">
                 </div>
             </div>
@@ -92,7 +98,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Border-width</div>
                         </div>
-                        <input type="text" class="form-control" id="widthInput" placeholder="Border-Width" value="4px">
+                        <input type="text" class="form-control" id="widthInput" placeholder="Border-Width" value="4px" name="borderWidth">
                     </div>
                 </div>
 
@@ -101,7 +107,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Border-color</div>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Border-color"
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Border-color" name="borderColor"
                             value="red">
                     </div>
                 </div>
@@ -112,7 +118,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Alter text</div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Alter text" value="Dart vader">
+                        <input type="text" class="form-control" placeholder="Alter text" value="Dart vader" name="alter">
                     </div>
                 </div>
             </div>
@@ -134,7 +140,7 @@
 
     </table>
     <input type="button" value="Add Student" id="addStudentButton">
-    <div class="jumbotron" id="diagramDiv" >
+    <div class="jumbotron" id="diagramDiv">
 
     </div>
     <!-- Optional JavaScript -->
