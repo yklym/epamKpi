@@ -3,19 +3,18 @@
         targetImg = document.getElementById('taskImg'),
         allButtons = task1Form.querySelectorAll(`input[type="text"]`),
         submitButton = task1Form.querySelector(`input[type="button"]`),
-        myButtons = {
-            width: allButtons[0],
-            height: allButtons[1],
-            borderWidth: allButtons[2],
-            borderColor: allButtons[3],
-            alter: allButtons[4]
-        };
-
+        inputsArr = [
+            ["width", allButtons[0]],
+            ["height", allButtons[1]],
+            ["borderWidth", allButtons[2]],
+            ["borderColor", allButtons[3]],
+            ["alter", allButtons[4]],
+        ];
+    const inputsMap = new Map(inputsArr);
 
     task1Form.addEventListener("input", event => {
         let currInput = event.target;
         let strVal = currInput.value.trim();
-        console.log(strVal);
         if (strVal == "") {
             currInput.classList.add("invalid-input");
             return;
@@ -23,37 +22,45 @@
         let isPxRequired = currInput.name !== "borderColor" && currInput.name !== "alter";
         if (isPxRequired) {
             let isNumber = !isNaN(strVal.substr(0, strVal.length - 2))
-            console.log(` isNumber ${isNumber}`);
-            console.log(` Ends with px ${strVal.endsWith("px")}`);
+
             if (!strVal.endsWith("px") || !isNumber) {
                 currInput.classList.add("invalid-input");
                 return;
             }
+        } else {
+            if (!/^[a-zA-Z]+$/.test(strVal)) {
+                currInput.classList.add("invalid-input");
+                return;
+            }
         }
+
         currInput.classList.remove("invalid-input");
 
     });
+
     submitButton.addEventListener("click", () => {
 
         if (checkInput()) {
-            for (let styleRule in myButtons) {
-                if (styleRule === "alter") {
-                    targetImg[styleRule] = myButtons[styleRule].value;
-                    break;
+            inputsMap.forEach((inputField, inputName) => {
+                if (inputName === "alter") {
+                    targetImg[inputName] = inputField.value;
+                    return;
                 }
-                targetImg.style[styleRule] = myButtons[styleRule].value;
+                targetImg.style[inputName] = inputField.value;
+            });
+        }
+
+        function checkInput() {
+            for (let inputField of inputsMap.values()) {
+                if (inputField.classList.contains("invalid-input")) {
+                    return false;
+                }
             }
+            return true
         }
     });
 
-    function checkInput() {
-        for (let buttonName in myButtons) {
-            if (myButtons[buttonName].contains("invalid-input")) {
-                return false;
-            }
-        }
-        return true;
-    }
+
 })();
 
 // Task 2
