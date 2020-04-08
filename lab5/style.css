@@ -54,15 +54,7 @@
 
 @media screen and (max-width: 940px) {
     .content-wrapper {
-        display: grid;
         width: 640px;
-    
         grid-template-columns: repeat(3, auto);
-        grid-column-gap: auto;
-        grid-row-gap: auto;
-        margin-left: auto;
-        margin-right: auto;
-    
-        border: 3px solid red;
     }
 }
