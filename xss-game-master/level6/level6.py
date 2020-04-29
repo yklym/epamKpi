@@ -11,8 +11,6 @@ def render(tpl_path, context = {}):
 class MainPage(webapp.RequestHandler):
  
     def get(self):
-        self.response.headers.add_header("X-XSS-Protection", "1")
-
         self.response.out.write(render('index.html'))
  
 application = webapp.WSGIApplication([ ('.*', MainPage) ], debug=False)
