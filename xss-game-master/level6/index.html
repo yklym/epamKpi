@@ -18,6 +18,7 @@
     function includeGadget(url) {
       var scriptEl = document.createElement('script');
 
+      console.log(url);
       // This will totally prevent us from loading evil URLs!
       if (url.match(/^https?:\/\//i)) {
         setInnerText(document.getElementById("log"),
@@ -28,9 +29,9 @@
       // Load this awesome gadget
       scriptEl.src = url;
 
-      if (isVulnerableUrl(url)) {
-        return;
-      }
+      // if (isVulnerableUrl(url)) {
+      //   return;
+      // }
       // Show log messages
       scriptEl.onload = function () {
         setInnerText(document.getElementById("log"),

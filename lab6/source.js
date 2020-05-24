@@ -8,7 +8,7 @@ $(document).ready(function () {
 
             e.preventDefault();
 
-            let reqBody = {}
+            const reqBody = {}
 
             let validInputsFlag = true;
             $('#task1 form input[type="text"]').each((key, item) => {

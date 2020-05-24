@@ -39,6 +39,7 @@ class MainPage(webapp.RequestHandler):
  
   def get(self):
     # Disable the reflected XSS filter for demonstration purposes
+    self.response.headers.add_header("Content-Security-Policy", "default-src 'self'")
 
     self.response.headers.add_header("X-XSS-Protection", "1")
  

@@ -13,7 +13,7 @@ class MainPage(webapp.RequestHandler):
   _routes = ["welcome", "signup", "confirm"]
   
   def get(self):
-    
+    self.response.headers.add_header("Content-Security-Policy", "default-src 'self'")
     
     # Route the request to the appropriate template
     if self.request.path.endswith("signup"):
