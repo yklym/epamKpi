@@ -1,0 +1,13 @@
+#loginForm{
+    max-width: 40%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 5%;
+    border: 1px solid darkgrey;
+}
+
+.err-mess{
+    color: tomato;
+    font-weight: bold;
+}
+
