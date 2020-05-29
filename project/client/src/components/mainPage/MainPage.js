@@ -15,7 +15,7 @@ class MainPage extends React.Component {
 
         <section className="main-page-info">
           <div className="main-page-article-image">
-            <img src="https://html5css.ru/w3css/img_avatar3.png"></img>
+            <img src="https://html5css.ru/w3css/img_avatar3.png" alt="info img"></img>
           </div>
           <article>
             <h4>Lorem!</h4>
@@ -31,15 +31,6 @@ class MainPage extends React.Component {
               debitis. Nulla aliquam interdum dictumst bibendum, sem
               pellentesque maecenas amet rutrum, dolor quam venenatis in aenean,
               justo quam magna congue. Malesuada vel molestie quia wisi
-              pharetra, placerat conubia wisi bibendum, nonummy sollicitudin
-              lectus mollis. Quis duis wisi nunc auctor sit commodo, aliquam
-              vivamus tellus facilisis, consequat nulla eu dui torquent pede
-              maecenas, fringilla tristique aenean orci ante justo, non urna leo
-              dis vehicula libero. Ut id donec quis curabitur, luctus pede
-              tortor amet vitae felis, risus mollis in quisque, lobortis nunc
-              augue massa nec aptent nunc. Pellentesque sit tortor commodo est
-              mauris libero, fringilla ligula amet turpis suscipit proin vitae,
-              mauris mi id lacus nibh et.
             </p>
           </article>
         </section>
@@ -70,8 +61,8 @@ class MainPage extends React.Component {
               mauris mi id lacus nibh et.
             </p>
           </article>
-          <div className="main-page-article-image">
-            <img src="https://html5css.ru/w3css/img_avatar3.png"></img>
+          <div className="main-page-article-image" >
+            <img src="https://html5css.ru/w3css/img_avatar3.png" alt="info img"></img>
           </div>
         </section>
       </main>

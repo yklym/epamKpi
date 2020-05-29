@@ -1,16 +1,13 @@
-
-.main-page-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
+.main-page-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .main-page-header {
   grid-row: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 5%;
-  
 }
 
 .main-page-header .carousel {
@@ -34,29 +31,28 @@
   overflow: hidden;
 }
 
-.main-page-body .main-page-info{
-    background-color: white;
-    height: 1fr;
+.main-page-body .main-page-info {
+  background-color: white;
+  height: 1fr;
 }
 
 /*  */
-.main-page-info{
-    display: flex;
-    padding: 3%;
-    justify-content: space-around;
-    
+.main-page-info {
+  margin: 1% 0%;
+  display: flex;
+  padding: 3%;
+  justify-content: space-around;
 }
 
-
-.main-page-info article{
-    max-width: 60%;
+.main-page-info article {
+  max-width: 60%;
 }
 
-.main-page-info .main-page-article-image{
-    max-width: 30%;
+.main-page-info .main-page-article-image {
+  max-width: 30%;
 }
 
-.main-page-info .main-page-article-image img{
-    width: 300px;
-    height: 300px;
+.main-page-info .main-page-article-image img {
+  width: 300px;
+  height: 300px;
 }
