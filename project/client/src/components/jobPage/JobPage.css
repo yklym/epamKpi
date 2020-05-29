@@ -1,0 +1,77 @@
+.job-page-body {
+  background-color: white;
+  padding: 2%;
+  border: 1px solid rgb(209, 203, 203);
+}
+
+.job-page-body section {
+  margin: 5% 0%;
+}
+
+.job-page-body h3,
+h4 {
+  text-align: center;
+}
+
+.job-page-body .card-header {
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.job-page-description {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.job-page-description .img-wrapper img {
+  max-width: 250px;
+  max-height: 150px;
+  object-fit: cover;
+  border: 1px solid black;
+}
+
+.job-page-description .text-wrapper {
+  max-width: 60%;
+  border-bottom: 1px solid rgb(117, 115, 115);
+}
+
+
+
+.job-page-details {
+  border-bottom: 1px solid rgb(117, 115, 115);
+}
+.job-page-details .table-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.job-page-details .table-wrapper table {
+  margin: 2%;
+}
+
+.job-page-details .table-wrapper td:first-of-type {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.job-page-details .table-wrapper td:first-of-type::after {
+  content: ":";
+}
+
+.job-page-location {
+  overflow: hidden;
+  height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.map-wrapper {
+  margin: 0, auto;
+  min-width: 700px;
+}
+
+.job-page-location .text-wrapper{
+    z-index: 5;
+}

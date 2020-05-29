@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import MainPageComponent from "./components/mainPage/MainPage";
 import JobsPageComponent from "./components/jobsSearchPage/JobsSearchPage";
+import JobPageComponent from "./components/jobPage/JobPage";
 
 class App extends React.Component {
   render() {
@@ -13,8 +14,7 @@ class App extends React.Component {
           <Route exact path="/" component={MainPageComponent} />
           <Route exact path="/home" component={MainPageComponent} />
           <Route exact path="/jobs" component={JobsPageComponent} />
-
-
+          <Route exact path="/jobs/:id" component={JobPageComponent} />
         
         </Switch>
       </>

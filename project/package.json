@@ -9,6 +9,7 @@
   "author": "me, yklym",
   "license": "ISC",
   "dependencies": {
+    "google-maps-react": "^2.0.6",
     "react": "^16.13.1"
   }
 }

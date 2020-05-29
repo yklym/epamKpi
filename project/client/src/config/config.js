@@ -1,0 +1,1 @@
+export const googleMapApi="AIzaSyAUGZ2FOE752KpOhEB9cXUiWMBsPtFzmaI";

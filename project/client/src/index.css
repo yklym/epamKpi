@@ -13,10 +13,6 @@ body {
 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 #root {
   background-color: rgb(230, 230, 230);
@@ -32,6 +28,7 @@ code {
 
 main{
   grid-column: 2/5;
+  min-height: 80vh;
 }
 
 footer {

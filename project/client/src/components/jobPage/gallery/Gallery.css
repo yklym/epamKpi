@@ -1,0 +1,56 @@
+.job-page-gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-around;
+  border-bottom: 1px solid rgb(117, 115, 115);
+}
+
+.gallery-component {
+  background-color: rgb(154, 154, 154);
+  display: flex;
+  justify-content: space-around;
+}
+
+.gallery-component img {
+  border: 1px solid black;
+}
+
+.gallery-component-main {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-component-main img {
+  max-height: 70%;
+  max-width: 80%;
+  margin: auto 0%;
+}
+
+.gallery-component-secondary {
+  background-color: rgb(78, 78, 78);
+
+  width: 30%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.gallery-component-secondary img {
+  margin: 2% 0%;
+  max-width: 100px;
+  max-height: 100px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+
+.gallery-component-secondary .main-picture-avatar img {
+   
+    border: 2px solid red;
+  }
+  

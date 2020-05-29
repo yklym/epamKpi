@@ -7,6 +7,6 @@
 .jobs-search-page-filters .card-header{
     cursor: pointer;
 }
-.card {
+.jobs-search-page-body .card {
     max-width: 90%;
 }

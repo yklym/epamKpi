@@ -32,7 +32,7 @@ function createCards(jobsArr) {
       {jobsArr.map((job) => {
         return (
           <Card className="w-90">
-            <Card.Header as="h5"><Link to={`/jobs${job.id}`}>{job.name}</Link></Card.Header>
+            <Card.Header as="h5"><Link to={`/jobs/${job.id}`}>{job.name}</Link></Card.Header>
             <Card.Body>
               <Card.Title>Special title treatment</Card.Title>
               <Card.Text>
