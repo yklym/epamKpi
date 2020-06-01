@@ -7,9 +7,9 @@ export default class SortFilter extends React.Component {
     super(props);
 
     this.state = {
-      currFilter: "date",
+      currFilter: "id",
     };
-    this.props.changeFilter("date");
+    this.props.changeFilter("id");
 
   }
 
@@ -29,58 +29,58 @@ export default class SortFilter extends React.Component {
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   id="basicRadio1"
-                  value="date"
-                  checked={this.state.currFilter === "date"}
+                  value="id"
+                  checked={this.state.currFilter === "id"}
                   onChange={this.handleOptionChange}
                 />
-                <label class="form-check-label" for="basicRadio1">
+                <label className="form-check-label" htmlFor="basicRadio1">
                   Date
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   id="basicRadio2"
                   value="salary"
                   checked={this.state.currFilter === "salary"}
                   onChange={this.handleOptionChange}
                 />
-                <label class="form-check-label" for="basicRadio2">
+                <label className="form-check-label" htmlFor="basicRadio2">
                   Salary
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   id="basicRadio3"
                   value="country"
                   checked={this.state.currFilter === "country"}
                   onChange={this.handleOptionChange}
                 />
-                <label class="form-check-label" for="basicRadio3">
+                <label className="form-check-label" htmlFor="basicRadio3">
                 Country
                 </label>
               </div>
 
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   id="basicRadio4"
-                  value="rating"
-                  checked={this.state.currFilter === "rating"}
+                  value="employerRating"
+                  checked={this.state.currFilter === "employerRating"}
                   onChange={this.handleOptionChange}
                 />
-                <label class="form-check-label" for="basicRadio4">
+                <label className="form-check-label" htmlFor="basicRadio4">
                 Employer rating
                 </label>
               </div>

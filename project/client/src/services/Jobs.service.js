@@ -17,21 +17,7 @@ class JobService {
         return this.jobs;
       });
   }
-
-  getPage(pageNumber = 1, pageSize = 0, filters = {}) {
-    pageNumber = Math.max(0, pageNumber - 1);
-    let startIndex = pageNumber * pageSize;
-    if (startIndex > this.jobs.length) {
-      startIndex = this.jobs.length - pageSize;
-    }
-    const slicedArr = this.jobs.slice(startIndex, startIndex + pageSize);
-    return slicedArr;
-  }
-
-  getPagesCount(pageSize = 0, filters = {}) {
-    return Math.ceil(this.jobs.length / pageSize);
-  }
-
+  
   loadJobById(id) {
     return fetch(serverUrl + `/job/${id}`, {
       method: "GET",
@@ -43,6 +29,45 @@ class JobService {
         return parsedRes;
       });
   }
+
+  getPage(pageNumber = 1, pageSize = 0, filters = null) {
+    
+    const jobsArr = applyFilters([...this.jobs], filters);    
+    pageNumber = Math.max(0, pageNumber - 1);
+    let startIndex = pageNumber * pageSize;
+    if (startIndex > jobsArr.length) {
+      startIndex = jobsArr.length - pageSize;
+    }
+    const slicedArr = jobsArr.slice(startIndex, startIndex + pageSize);
+    return slicedArr;
+  }
+
+  getPagesCount(pageSize = 0, filters = null) {
+    const jobsArr = applyFilters([...this.jobs], filters);
+    return Math.ceil(jobsArr.length / pageSize);
+  }
+
+}
+
+function applyFilters(jobsArr, filters) {
+  // console.log("filters");
+  // console.log(filters);
+  if (!filters) {
+    return jobsArr;
+  }
+  if (filters.sortBy) {
+    jobsArr.sort((elem, nextElem) => {
+      const firstVal = elem[filters.sortBy] || elem.info[filters.sortBy];
+      const secondVal =
+        nextElem[filters.sortBy] || nextElem.info[filters.sortBy];
+      if (parseInt(firstVal)) {
+        return parseInt(firstVal) - parseInt(secondVal);
+      } else {
+        return firstVal.localeCompare(secondVal);
+      }
+    });
+  }
+  return jobsArr;
 }
 
 const service = new JobService();

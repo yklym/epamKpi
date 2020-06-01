@@ -18,10 +18,7 @@
       "info": {
         "country": "UK",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -45,10 +42,8 @@
       "info": {
         "country": "Australia",
         "salary": "48$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -72,10 +67,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -99,10 +92,8 @@
       "info": {
         "country": "Poland",
         "salary": "98$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "4/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -126,10 +117,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -153,10 +142,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "3/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -180,10 +167,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -207,10 +192,8 @@
       "info": {
         "country": "Poland",
         "salary": "32$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -234,10 +217,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -261,10 +242,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -288,10 +267,8 @@
       "info": {
         "country": "Poland",
         "salary": "16$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -315,10 +292,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -342,10 +317,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -369,10 +342,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -396,10 +367,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -423,10 +392,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -450,10 +417,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -477,10 +442,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -504,10 +467,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -531,10 +492,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -558,10 +517,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"
@@ -585,10 +542,8 @@
       "info": {
         "country": "Poland",
         "salary": "56$ p/h",
-        "employer": {
-          "id": "0",
-          "rating": "5/5"
-        },
+        "employerRating": "5/5",
+
         "period": "4 mounth",
         "workPerDay": "8 hours",
         "holidaysAmount": "20 days p/m"

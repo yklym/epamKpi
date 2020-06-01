@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-import SortFilter  from "./filterComponents/SortFilter";
+import SortFilter from "./filterComponents/SortFilter";
 import PaginationComponent from "./pagination/Pagination";
 import "./JobsSearchPage.css";
 import { Link } from "react-router-dom";
@@ -18,35 +18,38 @@ class JobsSearchPage extends React.Component {
     this.state = {
       jobsArr: null,
       currPage: 1,
-      currFilters: {},
+      currFilters: null,
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     JobService.loadJobs().then((res) => {
-      this.setState({
-        jobsArr: JobService.getPage(1, pageSize),
-        maxPage: JobService.getPagesCount(pageSize),
-      });
+      this.renderPage();
     });
   }
 
-  renderPage = (pageNumber) => {
+  renderPage = (pageNumber = 1) => {
     console.log(`Rendering page ${pageNumber}`);
     const filters = this.state.currFilters;
     this.setState({
       jobsArr: JobService.getPage(pageNumber, pageSize, filters),
       currPage: pageNumber,
+      maxPage: JobService.getPagesCount(pageSize, filters),
     });
   };
 
   render() {
-    console.log(this.state)
+    console.log("rendering component")
     return (
       <>
         <aside className="jobs-search-page-filters">
           <SortFilter
             changeFilter={(value) => {
-              this.setState({ currFilters: { ...this.state.currFilters, "sortBy": value } });
+              const oldFilters = this.state.currFilters || {};
+              oldFilters.sortBy = value;
+              this.setState({
+                currFilters: oldFilters,
+              });
+              this.renderPage();
             }}
           />
         </aside>
@@ -68,10 +71,8 @@ function createCards(jobsArr) {
     return (
       <Card className="w-90 jobs-search-page-loader">
         <Card.Body>
-          <Card.Text>
-            <Spinner animation="border" role="status" variant="secondary" />
-            <p>Loading...</p>
-          </Card.Text>
+          <Spinner animation="border" role="status" variant="secondary" />
+          <p>Loading...</p>
         </Card.Body>
       </Card>
     );
@@ -95,13 +96,13 @@ function createCards(jobsArr) {
             </Card.Header>
             <Card.Body>
               <Card.Title>Special title treatment</Card.Title>
-              <Card.Text>
-                <ul>
-        <li>Country: {job.info.country || "Not assigned"}</li>
-        <li>Salary: {job.info.salary || "Not assigned"}</li>
-        <li>Employer rating:{job.info.employer.rating || "Not assigned"}</li>
-                </ul>
-              </Card.Text>
+              <ul>
+                <li>Country: {job.info.country || "Not assigned"}</li>
+                <li>Salary: {job.info.salary || "Not assigned"}</li>
+                <li>
+                  Employer rating:{job.info.employerRating || "Not assigned"}
+                </li>
+              </ul>
               <Button variant="secondary">Add to favourite</Button>
             </Card.Body>
           </Card>

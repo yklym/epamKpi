@@ -22,7 +22,7 @@ class JobPage extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     JobService.loadJobById(this.state.jobId).then((res) =>
       this.setState({ job: res })
     );
@@ -82,7 +82,7 @@ class JobPage extends React.Component {
                 </tr>
                 <tr>
                   <td>Employer rating:</td>
-                  <td>{job.info.employer.rating || "No info"}</td>
+                  <td>{job.info.employerRating || "No info"}</td>
                 </tr>
               </tbody>
             </table>
