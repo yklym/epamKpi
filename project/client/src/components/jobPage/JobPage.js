@@ -1,42 +1,60 @@
 import React from "react";
-import "./JobPage.css";
-import { Button } from "react-bootstrap";
+
+import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 import MapComponent from "./map/LocationMap";
 import GalleryComponent from "./gallery/Gallery";
-// import Accordion from "react-bootstrap/Accordion";
-// import Card from "react-bootstrap/Card";
+import JobService from "../../services/Jobs.service";
+
+import "./JobPage.css";
 
 class JobPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    let queryStrArr = this.props.location.pathname.split("/");
+    let jobId = queryStrArr[queryStrArr.length - 1];
+
+    this.state = {
+      job: null,
+      jobId: jobId,
+    };
+  }
+
+  componentWillMount() {
+    JobService.loadJobById(this.state.jobId).then((res) =>
+      this.setState({ job: res })
+    );
+  }
+
   render() {
+    const { job } = this.state;
+    if (!job) {
+      return (
+        <main className="job-page-body loader">
+          <Spinner animation="border" role="status" variant="secondary" />
+          <p>Loading...</p>
+        </main>
+      );
+    }
+    if (job.err) {
+      // Page 404
+    }
+
     return (
       <main className="job-page-body">
         {/* job name */}
-        <h3>Job Name</h3>
+        <h3>{this.state.job.name}</h3>
         <section className="job-page-description">
           <div className="text-wrapper">
             <h4>Description:</h4>
 
-            <p>
-              Lorem ipsum dolor sit amet, eros euismod distinctio ligula
-              vehicula, quam libero, lectus sed ipsum eu fringilla sed
-              tincidunt, ut quam adipiscing sed. Dictum mauris diam sodales
-              placeat eleifend, tempus erat vel. Nunc pede, blandit cum cursus
-              facilisis quis ligula cubilia, auctor hac tellus potenti ipsum, id
-              lobortis dolor turpis sodales phasellus arcu, varius tincidunt at.
-              Tincidunt a nec orci mi, lacinia donec et etiam et, egestas
-              gravida sed, libero rutrum aliquam, a wisi. Ut et eget auctor
-              tempus, elementum nec ante lacus mauris eros lectus, eget tempor,
-              neque felis ipsum ratione senectus ullamco. A leo urna fermentum,
-              netus curae primis nullam, enim euismod per. Purus congue ornare
-              odio amet, vehicula quis interdum in varius ligula, tempus auctor
-              erat sed ullamcorper in, gravida class ante, feugiat nulla
-              consequatur tortor lobortis praesent. Suspendisse purus, sed
-              ligula ac nunc felis eget ut, vehicula at dolor lobortis mi.
-            </p>
+            <p>{this.state.job.description || "No description for this job"}</p>
           </div>
           <div className="img-wrapper">
             <h5>Country:</h5>
+            {/* Todo implement image templator*/}
             <img
               src={require("./../../assets/flags/poland.png")}
               alt="country flag"
@@ -46,7 +64,7 @@ class JobPage extends React.Component {
 
         <section>
           <h4>Gallery:</h4>
-          <GalleryComponent />
+          <GalleryComponent images={this.state.job.images || []} />
         </section>
 
         <section className="job-page-details">
@@ -55,16 +73,16 @@ class JobPage extends React.Component {
             <table className="table table-hover table-sm">
               <tbody>
                 <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <td>Country</td>
+                  <td>{job.info.country || "No info"}</td>
                 </tr>
                 <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
+                  <td>Salary</td>
+                  <td>{job.info.salary || "No info"}</td>
                 </tr>
                 <tr>
-                  <td>Thornton</td>
-                  <td>@twitter</td>
+                  <td>Employer rating:</td>
+                  <td>{job.info.employer.rating || "No info"}</td>
                 </tr>
               </tbody>
             </table>
@@ -72,16 +90,17 @@ class JobPage extends React.Component {
             <table className="table table-hover table-sm">
               <tbody>
                 <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <td>Period</td>
+                  <td>{job.info.period || "No info"}</td>
+                </tr>
+
+                <tr>
+                  <td>Work Amount</td>
+                  <td>{job.info.workPerDay || "No info"}</td>
                 </tr>
                 <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-                <tr>
-                  <td>Thornton</td>
-                  <td>@twitter</td>
+                  <td>Holidays Amount</td>
+                  <td>{job.info.holidaysAmount || "No info"}</td>
                 </tr>
               </tbody>
             </table>
@@ -90,7 +109,7 @@ class JobPage extends React.Component {
 
         <section className="job-page-location">
           <div id="map-wrapper">
-            <MapComponent xCord={47.444} yCord={-122.176} />
+            <MapComponent xCord={job.location.xCord || 44.7} yCord={job.location.yCord || 44.7} />
           </div>
           <div className="text-wrapper">
             <h4>Location:</h4>

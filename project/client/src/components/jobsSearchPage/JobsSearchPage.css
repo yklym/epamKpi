@@ -1,12 +1,17 @@
-.jobs-search-page-body{
-    min-height: 80vh;
+.jobs-search-page-body {
+  min-height: 80vh;
 }
-.jobs-search-page-filters{
-    margin-left: 10%;
+.jobs-search-page-filters {
+  margin-left: 10%;
 }
-.jobs-search-page-filters .card-header{
-    cursor: pointer;
+.jobs-search-page-filters .card-header {
+  cursor: pointer;
 }
 .jobs-search-page-body .card {
-    max-width: 90%;
+  max-width: 90%;
+  margin-bottom: 2%;
+}
+
+.jobs-search-page-body .jobs-search-page-loader .card {
+  margin-bottom: 90%;
 }

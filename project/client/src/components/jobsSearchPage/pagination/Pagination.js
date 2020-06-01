@@ -6,21 +6,67 @@ import "./Pagination.css";
 export default function PaginationComponent(props) {
   return (
     <Pagination className="justify-content-center">
-      <Pagination.First />
-      <Pagination.Prev />
-      <Pagination.Item>{1}</Pagination.Item>
-      <Pagination.Ellipsis />
+      {props.currPage === 1 ? (
+        <>
+          <Pagination.Prev disabled />
+          <Pagination.Item active>{1}</Pagination.Item>
+        </>
+      ) : (
+        <>
+          <Pagination.Prev
+            onClick={() => props.renderPage(props.currPage - 1)}
+          />
+          <Pagination.Item onClick={() => props.renderPage(1)}>
+            {1}
+          </Pagination.Item>
 
-      <Pagination.Item>{10}</Pagination.Item>
-      <Pagination.Item>{11}</Pagination.Item>
-      <Pagination.Item active>{12}</Pagination.Item>
-      <Pagination.Item>{13}</Pagination.Item>
-      <Pagination.Item disabled>{14}</Pagination.Item>
+          <Pagination.Ellipsis disabled />
+        </>
+      )}
 
-      <Pagination.Ellipsis />
-      <Pagination.Item>{20}</Pagination.Item>
-      <Pagination.Next />
-      <Pagination.Last />
+      {renderPagesSelector(props)}
+
+      {props.currPage === props.maxPage ? (
+        <>
+          <Pagination.Item active>{props.maxPage}</Pagination.Item>
+          <Pagination.Next disabled />
+        </>
+      ) : (
+        <>
+          <Pagination.Ellipsis disabled />
+
+          <Pagination.Item onClick={() => props.renderPage(props.maxPage)}>
+            {props.maxPage}
+          </Pagination.Item>
+          <Pagination.Next
+            onClick={() => props.renderPage(props.currPage + 1)}
+          />
+        </>
+      )}
     </Pagination>
   );
+}
+
+function renderPagesSelector({ currPage, maxPage, renderPage }) {
+  const pagesArray = [];
+  for (
+    let i = Math.max(currPage - 3, 2);
+    i <= Math.min(currPage + 3, maxPage - 1);
+    i++
+  ) {
+    if (i === currPage) {
+      pagesArray.push(
+        <Pagination.Item active key={i}>
+          {i}
+        </Pagination.Item>
+      );
+      continue;
+    }
+    pagesArray.push(
+      <Pagination.Item onClick={() => renderPage(i)} key={i}>
+        {i}
+      </Pagination.Item>
+    );
+  }
+  return pagesArray;
 }

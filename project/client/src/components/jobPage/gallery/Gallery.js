@@ -5,54 +5,54 @@ class GalleryComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainImageIndex: 1,
+      mainImageIndex: 0,
     };
   }
 
-  renderSecondaryImages = function () {
-    return this.props.imagesArr.map((el, index) => {
+  setMain = function (index) {
+    this.setState({mainImageIndex : index});
+  };
+  renderSecondaryImages = function (imagesArr) {
+    return imagesArr.map((el, index) => {
       // main-picture-avatar
+      
       return (
         <img
-          src={require("./../../../assets/flags/poland.png")}
+          src={el}
           className={
             index === this.state.mainImageIndex ? "main-picture-avatar" : ""
           }
           alt={`gallery picture number ${index + 1}`}
           key={index}
+          onClick={()=>{this.setMain(index)}}
         ></img>
       );
     });
   };
 
-  
   render() {
+    if(!this.props.images.length){
+      return(<div className="gallery-component">
+      <div className="gallery-component-main">
+        <p>No images for this position</p>
+      </div>
+
+      <div className="gallery-component-secondary">
+        
+      </div>
+    </div>)
+    }
     return (
       <div className="gallery-component">
         <div className="gallery-component-main">
           <img
-            src={require("./../../../assets/flags/poland.png")}
+            src={this.props.images[this.state.mainImageIndex]}
             alt="country flag"
           ></img>
         </div>
 
         <div className="gallery-component-secondary">
-          <img
-            src={require("./../../../assets/flags/poland.png")}
-            alt="country flag"
-          ></img>
-          <img
-            src={require("./../../../assets/flags/poland.png")}
-            alt="country flag"
-          ></img>
-          <img
-            src={require("./../../../assets/flags/poland.png")}
-            alt="country flag"
-          ></img>
-          <img
-            src={require("./../../../assets/flags/poland.png")}
-            alt="country flag"
-          ></img>
+          {this.renderSecondaryImages(this.props.images)}
         </div>
       </div>
     );
