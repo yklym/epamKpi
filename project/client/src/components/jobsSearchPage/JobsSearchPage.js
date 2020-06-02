@@ -1,15 +1,15 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
 import SortFilter from "./filterComponents/SortFilter";
+import VerifyFilter from "./filterComponents/VerifyFilter";
 import PaginationComponent from "./pagination/Pagination";
 import "./JobsSearchPage.css";
-import { Link } from "react-router-dom";
 
 import { pageSize } from "../../config/config";
 import JobService from "../../services/Jobs.service";
+import JobCardComponent from "../partials/jobCard/JobCard";
 
 class JobsSearchPage extends React.Component {
   constructor(props) {
@@ -36,25 +36,37 @@ class JobsSearchPage extends React.Component {
       maxPage: JobService.getPagesCount(pageSize, filters),
     });
   };
-
+  changeFilters = (filterName, value) => {
+    const oldFilters = this.state.currFilters || {};
+    oldFilters[filterName] = value;
+    this.setState({
+      currFilters: oldFilters,
+    });
+    this.renderPage();
+  };
   render() {
-    console.log("rendering component")
     return (
       <>
         <aside className="jobs-search-page-filters">
           <SortFilter
             changeFilter={(value) => {
-              const oldFilters = this.state.currFilters || {};
-              oldFilters.sortBy = value;
-              this.setState({
-                currFilters: oldFilters,
-              });
-              this.renderPage();
+              this.changeFilters("sortBy", value);
+            }}
+            changeReverse={(value) => {
+              this.changeFilters("reverse", value);
+            }}
+          />
+
+          <VerifyFilter
+            changeFilter={(value) => {
+              this.changeFilters("filterBy", value);
             }}
           />
         </aside>
+
         <main className="jobs-search-page-body">
-          {createCards(this.state.jobsArr)}
+          {createMainPart(this.state.jobsArr)}
+
           <PaginationComponent
             currPage={this.state.currPage}
             maxPage={this.state.maxPage}
@@ -66,7 +78,7 @@ class JobsSearchPage extends React.Component {
   }
 }
 
-function createCards(jobsArr) {
+function createMainPart(jobsArr) {
   if (!jobsArr) {
     return (
       <Card className="w-90 jobs-search-page-loader">
@@ -86,30 +98,16 @@ function createCards(jobsArr) {
       </Card>
     );
   }
+  return createCards(jobsArr);
+}
+
+function createCards(jobsArr) {
   return (
     <>
       {jobsArr.map((job) => {
-        return (
-          <Card className="w-90" key={job.id}>
-            <Card.Header as="h5">
-              <Link to={`/jobs/${job.id}`}>{job.name}</Link>
-            </Card.Header>
-            <Card.Body>
-              <Card.Title>Special title treatment</Card.Title>
-              <ul>
-                <li>Country: {job.info.country || "Not assigned"}</li>
-                <li>Salary: {job.info.salary || "Not assigned"}</li>
-                <li>
-                  Employer rating:{job.info.employerRating || "Not assigned"}
-                </li>
-              </ul>
-              <Button variant="secondary">Add to favourite</Button>
-            </Card.Body>
-          </Card>
-        );
+        return <JobCardComponent job={job} key={job.id}/>;
       })}
     </>
   );
 }
-
 export default JobsSearchPage;

@@ -22,7 +22,7 @@ class GalleryComponent extends React.Component {
           className={
             index === this.state.mainImageIndex ? "main-picture-avatar" : ""
           }
-          alt={`gallery picture number ${index + 1}`}
+          alt={` number ${index + 1}`}
           key={index}
           onClick={()=>{this.setMain(index)}}
         ></img>

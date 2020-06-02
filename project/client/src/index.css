@@ -1,4 +1,5 @@
-*, body{
+*,
+body {
   box-sizing: border-box;
 }
 
@@ -10,23 +11,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
-
 
 #root {
   background-color: rgb(230, 230, 230);
 
   display: grid;
-  grid-template-columns: 10% auto auto auto 10%;
-  gap: 3%;
+  grid-template-columns: 10% 24% 24% 24% 10%;
+  gap: 2%;
 }
 
 .navbar {
   grid-column: 1/6;
 }
 
-main{
+main {
   grid-column: 2/5;
   min-height: 80vh;
 }

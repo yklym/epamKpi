@@ -6,7 +6,8 @@ import Spinner from "react-bootstrap/Spinner";
 import MapComponent from "./map/LocationMap";
 import GalleryComponent from "./gallery/Gallery";
 import JobService from "../../services/Jobs.service";
-
+import FavouritesService from "../../services/Favourites.service";
+import NotFoundPage from "../partials/errPage/notFoundPage";
 import "./JobPage.css";
 
 class JobPage extends React.Component {
@@ -19,7 +20,11 @@ class JobPage extends React.Component {
     this.state = {
       job: null,
       jobId: jobId,
+      isFavourite: FavouritesService.check(jobId),
     };
+    console.log("Checking if is fav");
+    console.log(FavouritesService.check(jobId));
+    console.log(FavouritesService.getAll());
   }
 
   componentDidMount() {
@@ -39,13 +44,19 @@ class JobPage extends React.Component {
       );
     }
     if (job.err) {
-      // Page 404
+      return <NotFoundPage />;
     }
 
     return (
       <main className="job-page-body">
-        {/* job name */}
-        <h3>{this.state.job.name}</h3>
+        <h3>
+          {this.state.job.name}
+          {this.state.isFavourite ? (
+            <span className="badge badge-danger">Favourite</span>
+          ) : (
+            ""
+          )}
+        </h3>
         <section className="job-page-description">
           <div className="text-wrapper">
             <h4>Description:</h4>
@@ -109,16 +120,44 @@ class JobPage extends React.Component {
 
         <section className="job-page-location">
           <div id="map-wrapper">
-            <MapComponent xCord={job.location.xCord || 44.7} yCord={job.location.yCord || 44.7} />
+            <MapComponent
+              xCord={job.location.xCord || 44.7}
+              yCord={job.location.yCord || 44.7}
+            />
           </div>
           <div className="text-wrapper">
             <h4>Location:</h4>
             <p>SOme address description</p>
             <hr />
             <br />
-            <h4>Interested in this offer?</h4>
 
-            <Button className="btn-secondary">Add to interested!</Button>
+            {this.state.isFavourite ? (
+              <>
+                <h4>You are interested in this offer</h4>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    FavouritesService.delete(job.id);
+                    this.setState({ isFavourite: false });
+                  }}
+                >
+                  Remove from favourite
+                </Button>
+              </>
+            ) : (
+              <>
+                <h4>Interested in this offer?</h4>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    FavouritesService.add(job);
+                    this.setState({ isFavourite: true });
+                  }}
+                >
+                  Add to favourites!
+                </Button>
+              </>
+            )}
           </div>
         </section>
       </main>

@@ -8,9 +8,9 @@ export default class SortFilter extends React.Component {
 
     this.state = {
       currFilter: "id",
+      reverse: false,
     };
     this.props.changeFilter("id");
-
   }
 
   handleOptionChange = (event) => {
@@ -18,6 +18,14 @@ export default class SortFilter extends React.Component {
       currFilter: event.target.value,
     });
     this.props.changeFilter(event.target.value);
+  };
+
+  handleReverseOptionChange = () => {
+    const newValue = !this.state.reverse;
+    this.setState({
+      reverse: newValue,
+    });
+    this.props.changeReverse(newValue);
   };
 
   render() {
@@ -67,7 +75,7 @@ export default class SortFilter extends React.Component {
                   onChange={this.handleOptionChange}
                 />
                 <label className="form-check-label" htmlFor="basicRadio3">
-                Country
+                  Country
                 </label>
               </div>
 
@@ -81,7 +89,21 @@ export default class SortFilter extends React.Component {
                   onChange={this.handleOptionChange}
                 />
                 <label className="form-check-label" htmlFor="basicRadio4">
-                Employer rating
+                  Employer rating
+                </label>
+              </div>
+
+              <hr />
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  checked={this.state.reverse}
+                  onChange={this.handleReverseOptionChange}
+                  id="reverseCheckbox"
+                />
+                <label className="form-check-label" htmlFor="reverseCheckbox">
+                  Reverse sorting
                 </label>
               </div>
             </Card.Body>
