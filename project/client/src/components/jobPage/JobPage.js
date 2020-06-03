@@ -73,7 +73,7 @@ class JobPage extends React.Component {
           </div>
         </section>
 
-        <section>
+        <section className="job-page-gallery">
           <h4>Gallery:</h4>
           <GalleryComponent images={this.state.job.images || []} />
         </section>

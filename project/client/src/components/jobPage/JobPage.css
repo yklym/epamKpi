@@ -34,7 +34,6 @@ h4 {
 .job-page-description .img-wrapper img {
   max-width: 250px;
   max-height: 150px;
-  object-fit: cover;
   border: 1px solid black;
 }
 
@@ -42,8 +41,6 @@ h4 {
   max-width: 60%;
   border-bottom: 1px solid rgb(117, 115, 115);
 }
-
-
 
 .job-page-details {
   border-bottom: 1px solid rgb(117, 115, 115);
@@ -67,7 +64,7 @@ h4 {
 
 .job-page-location {
   overflow: hidden;
-  height: 400px;
+  min-height: 400px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -78,6 +75,37 @@ h4 {
   min-width: 700px;
 }
 
-.job-page-location .text-wrapper{
+.job-page-location .text-wrapper {
+  z-index: 5;
+}
+
+@media (max-width: 990px) {
+  .job-page-location {
+    flex-direction: column;
+  }
+
+  .job-page-location .text-wrapper {
+    max-width: 40%;
+    margin: 420px auto 20px auto;
     z-index: 5;
+  }
+}
+@media (max-width: 760px) {
+  .job-page-details .table-wrapper {
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .table-wrapper .table-sm{
+    max-width: 80%;
+  }
+}
+@media (max-width: 480px) {
+  .job-page-description {
+    flex-direction: column-reverse;
+  }
+
+  .job-page-description .text-wrapper{
+    max-width: 90%;
+  }
 }

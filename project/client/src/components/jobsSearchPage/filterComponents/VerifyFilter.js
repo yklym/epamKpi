@@ -26,7 +26,7 @@ export default class VerifyFilter extends React.Component {
   render() {
 
     return (
-      <Accordion defaultActiveKey="0">
+      <Accordion className="filters-block">
         <Card className="card-filters">
           <Accordion.Toggle as={Card.Header} eventKey="0">
             {"Filters:"}

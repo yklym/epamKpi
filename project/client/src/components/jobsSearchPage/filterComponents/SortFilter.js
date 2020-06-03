@@ -30,7 +30,7 @@ export default class SortFilter extends React.Component {
 
   render() {
     return (
-      <Accordion defaultActiveKey="0">
+      <Accordion className="filters-block">
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="0">
             {"Sort by:"}

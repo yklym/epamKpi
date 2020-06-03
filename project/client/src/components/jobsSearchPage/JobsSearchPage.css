@@ -1,17 +1,43 @@
 .jobs-search-page-body {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 .jobs-search-page-filters {
-  margin-left: 10%;
+  margin-left: 5%;
+}
+.jobs-search-page-body {
+  grid-column: 3/6;
+}
+
+.jobs-search-page-filters {
+  grid-column: 1/3;
 }
 .jobs-search-page-filters .card-header {
   cursor: pointer;
 }
 .jobs-search-page-body .card {
-  max-width: 90%;
+  width: 90%;
   margin-bottom: 2%;
 }
 
 .jobs-search-page-body .jobs-search-page-loader .card {
   margin-bottom: 90%;
+}
+
+@media (max-width: 767px) {
+  .jobs-search-page-filters {
+    width: 80%;
+    margin: 3%;
+  }
+  .jobs-search-page-body {
+    width: 90%;
+    align-items: center;
+  }
+  .navbar {
+    width: 100%;
+  }
+  footer {
+    width: 100%;
+  }
 }

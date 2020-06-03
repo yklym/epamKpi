@@ -28,7 +28,6 @@ class JobsSearchPage extends React.Component {
   }
 
   renderPage = (pageNumber = 1) => {
-    console.log(`Rendering page ${pageNumber}`);
     const filters = this.state.currFilters;
     this.setState({
       jobsArr: JobService.getPage(pageNumber, pageSize, filters),
