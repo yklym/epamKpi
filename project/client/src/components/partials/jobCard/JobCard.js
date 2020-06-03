@@ -12,10 +12,6 @@ export default class JobCard extends React.Component {
     };
   }
 
-  // componentDidMount(){
-
-  // }
-
   render() {
     const job = this.props.job;
     const isFavourite = this.state.isFavourite;

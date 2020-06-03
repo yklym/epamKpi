@@ -13,7 +13,6 @@ module.exports = class Db {
 
   static getById(id) {
     return fs.readFile(db_uri, "utf8").then((res) => {
-      console.log(JSON.parse(res).jobs.find((el) => el.id === id))
       return JSON.parse(res).jobs.find((el) => el.id == id);
     });
   }

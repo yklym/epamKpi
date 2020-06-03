@@ -1,6 +1,5 @@
 import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-// import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 
 class NavComponent extends React.Component {

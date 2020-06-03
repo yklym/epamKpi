@@ -10,12 +10,10 @@ class GalleryComponent extends React.Component {
   }
 
   setMain = function (index) {
-    this.setState({mainImageIndex : index});
+    this.setState({ mainImageIndex: index });
   };
   renderSecondaryImages = function (imagesArr) {
     return imagesArr.map((el, index) => {
-      // main-picture-avatar
-      
       return (
         <img
           src={el}
@@ -24,23 +22,25 @@ class GalleryComponent extends React.Component {
           }
           alt={` number ${index + 1}`}
           key={index}
-          onClick={()=>{this.setMain(index)}}
+          onClick={() => {
+            this.setMain(index);
+          }}
         ></img>
       );
     });
   };
 
   render() {
-    if(!this.props.images.length){
-      return(<div className="gallery-component">
-      <div className="gallery-component-main">
-        <p>No images for this position</p>
-      </div>
+    if (!this.props.images.length) {
+      return (
+        <div className="gallery-component">
+          <div className="gallery-component-main">
+            <p>No images for this position</p>
+          </div>
 
-      <div className="gallery-component-secondary">
-        
-      </div>
-    </div>)
+          <div className="gallery-component-secondary"></div>
+        </div>
+      );
     }
     return (
       <div className="gallery-component">

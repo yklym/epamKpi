@@ -34,6 +34,7 @@ class JobsSearchPage extends React.Component {
       currPage: pageNumber,
       maxPage: JobService.getPagesCount(pageSize, filters),
     });
+    window.scrollTo(0, 0);
   };
   changeFilters = (filterName, value) => {
     const oldFilters = this.state.currFilters || {};
@@ -104,7 +105,7 @@ function createCards(jobsArr) {
   return (
     <>
       {jobsArr.map((job) => {
-        return <JobCardComponent job={job} key={job.id}/>;
+        return <JobCardComponent job={job} key={job.id} />;
       })}
     </>
   );

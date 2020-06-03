@@ -22,9 +22,6 @@ class JobPage extends React.Component {
       jobId: jobId,
       isFavourite: FavouritesService.check(jobId),
     };
-    console.log("Checking if is fav");
-    console.log(FavouritesService.check(jobId));
-    console.log(FavouritesService.getAll());
   }
 
   componentDidMount() {

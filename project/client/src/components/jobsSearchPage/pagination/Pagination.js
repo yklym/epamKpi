@@ -4,6 +4,16 @@ import Pagination from "react-bootstrap/Pagination";
 import "./Pagination.css";
 
 export default function PaginationComponent(props) {
+  if (props.maxPage === 1) {
+    return (
+      <Pagination className="justify-content-center">
+
+        <Pagination.Prev disabled />
+        <Pagination.Item active>{1}</Pagination.Item>
+        <Pagination.Next disabled />
+      </Pagination>
+    );
+  }
   return (
     <Pagination className="justify-content-center">
       {props.currPage === 1 ? (
@@ -19,8 +29,7 @@ export default function PaginationComponent(props) {
           <Pagination.Item onClick={() => props.renderPage(1)}>
             {1}
           </Pagination.Item>
-
-          <Pagination.Ellipsis disabled />
+          {1 - props.currPage <= -3 ? <Pagination.Ellipsis disabled /> : <></>}
         </>
       )}
 
@@ -33,7 +42,11 @@ export default function PaginationComponent(props) {
         </>
       ) : (
         <>
-          <Pagination.Ellipsis disabled />
+          {props.maxPage - props.currPage >= 3 ? (
+            <Pagination.Ellipsis disabled />
+          ) : (
+            <></>
+          )}
 
           <Pagination.Item onClick={() => props.renderPage(props.maxPage)}>
             {props.maxPage}

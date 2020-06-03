@@ -65,7 +65,9 @@
 
   .gallery-component-secondary img {
     margin: 0% 1%;
-    max-width: 100px;
+    max-height: 80%;
+    max-width: 70px;
+    object-fit: contain;
   }
 
   .gallery-component-main {
